@@ -109,6 +109,12 @@ class Bombero(Persona):
         verbose_name=_("Lugar de Nacimiento"))
 
 
+class Alergia(models.Model):
+    nombre = models.CharField(
+        max_length=255,
+        verbose_name=_("Nombre de la Alergia"))
+
+
 class Parentesco(models.Model):
     bombero = models.ForeignKey(
         Bombero,
