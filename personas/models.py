@@ -426,13 +426,10 @@ class Cursos(models.Model):
         Institucion,
         verbose_name=_("Institución"))
     fecha = models.DateField(
-        fecha,
         verbose_name=_("Fecha del Curso"))
-    tema = models ForeingKey(
-        tema,
+    tema = models.CharField(
         verbose_name=_("Tema del Curso"))
-    observaciones = models.Foreingkey(
-        observaciones,
+    observaciones = models.TextField(
         verbose_name=_("Observaciones"))
 
 
