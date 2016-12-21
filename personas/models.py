@@ -417,3 +417,25 @@ class Estudio(models.Model):
         return "{0}".format(
             self.estudio
             )
+
+class Cursos(models.Model):
+    bombero = models.ForeignKey(
+        Bombero,
+        verbose_name=_("Bombero"))
+    instituciondictante = models.ForeignKey(
+        Institucion,
+        verbose_name=_("Institución"))
+    fecha = models.DateField(
+        fecha,
+        verbose_name=_("Fecha del Curso"))
+    tema = models ForeingKey(
+        tema,
+        verbose_name=_("Tema del Curso"))
+    observaciones = models.Foreingkey(
+        observaciones,
+        verbose_name=_("Observaciones"))
+
+
+    def __init__(self):
+        super(cursos, self).__init__()
+
