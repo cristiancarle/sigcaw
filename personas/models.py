@@ -393,6 +393,7 @@ class Estudio(models.Model):
                 self.periodo_hasta)
         else:
             periodo += ' la actualidad'
+
         return "{0}".format(periodo)
 
     @property
@@ -474,3 +475,23 @@ class CalificacionAnual(models.Model):
             self.bombero,
             self.periodo,
             self.calificacion_escrita)
+
+class Cursos(models.Model):
+    Institucion = models.ForeignKey(
+        Institucion,
+        verbose_name=_("Institución"))
+    bombero = models.ForeignKey(
+        Bombero,
+        verbose_name=_("Bombero"))
+    fecha = models.DateField(
+         verbose_name=_("Fecha"))
+    titulo = models.CharField(
+        max_length=50,
+        verbose_name=_("Título"))
+    descripcion = models.CharField(
+        max_length=255,
+        verbose_name=_("Descripción"))
+
+    class Meta:
+        verbose_name = _("Curso")
+        verbose_name_plural = _("Cursos")
