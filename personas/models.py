@@ -476,13 +476,11 @@ class CalificacionAnual(models.Model):
             self.periodo,
             self.calificacion_escrita)
 
+
 class Cursos(models.Model):
-    Institucion = models.ForeignKey(
+    institucion = models.ForeignKey(
         Institucion,
         verbose_name=_("Institución"))
-    bombero = models.ForeignKey(
-        Bombero,
-        verbose_name=_("Bombero"))
     fecha = models.DateField(
          verbose_name=_("Fecha"))
     titulo = models.CharField(

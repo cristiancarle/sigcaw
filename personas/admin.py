@@ -11,7 +11,8 @@ from personas.models import (
     Estudio,
     Empleo,
     Institucion,
-    CalificacionAnual
+    CalificacionAnual,
+    Cursos,
 )
 
 
@@ -303,7 +304,8 @@ class TelefonoAdmin(admin.ModelAdmin):
         (_("Observaciones"), {
             'classes': ('collapse',),
             'fields': ('observaciones',),
-            }))
+            })
+    )
     list_display = (
         'entidad',
         'tipo',
@@ -354,4 +356,34 @@ class CalificacionAnualAdmin(admin.ModelAdmin):
                 'periodo',
                 'puntaje_en_numero',)
         }),
+    )
+
+
+@admin.register(Cursos)
+class CursosAdmin(admin.ModelAdmin):
+    actions_on_bottom = True
+    fieldsets = (
+        (None, {
+            'fields': (
+                'institucion',
+                'fecha',
+                'titulo',
+                'descripcion',
+            )
+        }),
+    )
+    date_hierarchy = 'fecha'
+    list_filter = (
+        'titulo',
+        'institucion',
+    )
+    search_fields = (
+        'titulo',
+        'descripcion',
+        'intitucion',
+    )
+    list_display = (
+        'titulo',
+        'institucion',
+        'fecha',
     )
