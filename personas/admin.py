@@ -12,7 +12,7 @@ from personas.models import (
     Empleo,
     Institucion,
     CalificacionAnual,
-    Cursos,
+    NumeroOrden,
 )
 
 
@@ -306,8 +306,7 @@ class TelefonoAdmin(admin.ModelAdmin):
         (_("Observaciones"), {
             'classes': ('collapse',),
             'fields': ('observaciones',),
-            })
-    )
+            }))
     list_display = (
         'entidad',
         'tipo',
@@ -338,8 +337,6 @@ class DireccionElectronicaAdmin(admin.ModelAdmin):
     list_filter = (
         'entidad',)
 
-#admin.site.register(CalificacionAnual)
-
 
 @admin.register(CalificacionAnual)
 class CalificacionAnualAdmin(admin.ModelAdmin):
@@ -361,31 +358,38 @@ class CalificacionAnualAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(Cursos)
-class CursosAdmin(admin.ModelAdmin):
+@admin.register(NumeroOrden)
+class NumeroOrdenAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     fieldsets = (
         (None, {
             'fields': (
-                'institucion',
-                'fecha',
-                'titulo',
-                'descripcion',
-            )
+                'numero_orden',
+                'bombero',
+                'vigencia_desde',)
         }),
-    )
-    date_hierarchy = 'fecha'
-    list_filter = (
-        'titulo',
-        'institucion',
-    )
-    search_fields = (
-        'titulo',
-        'descripcion',
-        'intitucion',
+        (_("Finalización de vigencia"), {
+            'classes': ('collapse',),
+            'fields': ('vigencia_hasta',),
+        })
     )
     list_display = (
-        'titulo',
-        'institucion',
-        'fecha',
+        'numero_orden',
+        'bombero',
+        'vigencia_desde',
+        'vigencia_hasta',
+    )
+    list_filter = (
+        'numero_orden',
+        'bombero',
+        'vigencia_desde',
+        'vigencia_hasta',
+    )
+    date_hierarchy = 'vigencia_hasta'
+    search_fields = (
+        'numero_orden',
+        'bombero.persona.apellido',
+        'bombero.persona.nombre',
+        'vigencia_desde',
+        'vigencia_hasta',
     )
